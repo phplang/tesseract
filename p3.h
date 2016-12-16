@@ -474,36 +474,6 @@ zend_class_entry* initClassEntry(
 
 /////////////////////////////////////////////////////////////////////////////
 
-#define P3_ACC_NOREAD (1<<0)
-#define P3_ACC_NOWRITE (1<<1)
-
-#define P3_ACC_RDWR 0
-#define P3_ACC_OPAQUE   (P3_ACC_NORD | P3_ACC_NOWR)
-#define P3_ACC_READONLY  P3_ACC_NOWR
-#define P3_ACC_WRITEONLY P3_ACC_NORD
-
-struct property_entry {
-	const char *name;
-	size_t name_len;
-	zend_uchar type;
-	off_t offset;
-    zend_long zflags;
-	zend_uchar pflags;
-};
-
-#define P3_PROPERTY(cls, prop, zf, pf) \
-	{ #prop, strlen(#prop), phpType<typeof(cls::prop)>::type, \
-      XtOffset(cls, prop), zf, pf },
-#define P3_PROPERTY_END { NULL }
-
-template<class T>
-void setPropertyTable(const property_entry* props) {
-  if (!props || !props->name) return;
-  // TODO
-}
-
-/////////////////////////////////////////////////////////////////////////////
-
 #undef P3_CASTABLE_TYPES
 #undef P3_COMPARABLE_TYPES
 } // namespace p3
