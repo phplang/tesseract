@@ -52,6 +52,7 @@ struct Tesseract : tesseract::TessBaseAPI {
     }
     m_image = image;
     SetImage(m_image);
+    RETURN_ZVAL(getThis(), true, false);
   }
 
   P3_METHOD_DECLARE(setRectangle) {
