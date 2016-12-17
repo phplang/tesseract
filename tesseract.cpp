@@ -62,6 +62,7 @@ struct Tesseract : tesseract::TessBaseAPI {
       return;
     }
     SetRectangle(left, top, width, height);
+    RETURN_ZVAL(getThis(), true, false);
   }
 
   P3_METHOD_DECLARE(getUTF8Text) {
